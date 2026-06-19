@@ -20,5 +20,12 @@ public class TypingSpeedTester {
         System.out.println();
         System.out.println("Type the following paragraph:");
         System.out.println(paragraph);
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println();
+        System.out.println("Start typing below:");
+
+        String typedText = sc.nextLine();
     }
 }
