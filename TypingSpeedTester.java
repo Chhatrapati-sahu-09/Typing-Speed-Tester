@@ -38,5 +38,11 @@ public class TypingSpeedTester {
         System.out.println("Time Taken: " +
                    timeTaken +
                    " seconds");
+
+        int wordsTyped =
+                typedText.trim().split("\\s+").length;
+
+        System.out.println("Words Typed: " +
+                   wordsTyped);
     }
 }
