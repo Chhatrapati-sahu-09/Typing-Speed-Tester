@@ -1,3 +1,4 @@
+import java.util.Random;
 import java.util.Scanner;
 
 public class TypingSpeedTester {
@@ -10,6 +11,14 @@ public class TypingSpeedTester {
                 "Data structures and algorithms are important."
         };
 
+        Random random = new Random();
+
+        String paragraph =
+                paragraphs[random.nextInt(paragraphs.length)];
+
         System.out.println("=== Typing Speed Tester ===");
+        System.out.println();
+        System.out.println("Type the following paragraph:");
+        System.out.println(paragraph);
     }
 }
