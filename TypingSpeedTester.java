@@ -5,6 +5,8 @@ public class TypingSpeedTester {
 
     public static void main(String[] args) {
 
+        Scanner sc = new Scanner(System.in);
+
         String[] paragraphs = {
                 "Java is a powerful programming language.",
                 "Practice coding every day to improve your skills.",
@@ -16,15 +18,18 @@ public class TypingSpeedTester {
         String paragraph =
                 paragraphs[random.nextInt(paragraphs.length)];
 
-        System.out.println("=== Typing Speed Tester ===");
+        System.out.println("=================================");
+        System.out.println("      TYPING SPEED TESTER");
+        System.out.println("=================================");
+
         System.out.println();
         System.out.println("Type the following paragraph:");
+        System.out.println();
         System.out.println(paragraph);
-
-        Scanner sc = new Scanner(System.in);
 
         System.out.println();
         System.out.println("Start typing below:");
+        System.out.println();
 
         long startTime = System.currentTimeMillis();
 
@@ -35,14 +40,27 @@ public class TypingSpeedTester {
         double timeTaken =
                 (endTime - startTime) / 1000.0;
 
-        System.out.println("Time Taken: " +
-                   timeTaken +
-                   " seconds");
-
         int wordsTyped =
                 typedText.trim().split("\\s+").length;
 
+        double minutes =
+                timeTaken / 60.0;
+
+        double wpm =
+                wordsTyped / minutes;
+
+        System.out.println();
+        System.out.println("========== RESULT ==========");
+
+        System.out.printf("Time Taken : %.2f seconds%n",
+                timeTaken);
+
         System.out.println("Words Typed: " +
-                   wordsTyped);
+                wordsTyped);
+
+        System.out.printf("WPM        : %.2f%n",
+                wpm);
+
+        sc.close();
     }
 }
