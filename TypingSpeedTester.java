@@ -26,6 +26,17 @@ public class TypingSpeedTester {
         System.out.println();
         System.out.println("Start typing below:");
 
+        long startTime = System.currentTimeMillis();
+
         String typedText = sc.nextLine();
+
+        long endTime = System.currentTimeMillis();
+
+        double timeTaken =
+                (endTime - startTime) / 1000.0;
+
+        System.out.println("Time Taken: " +
+                   timeTaken +
+                   " seconds");
     }
 }
