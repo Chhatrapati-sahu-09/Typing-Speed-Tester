@@ -64,4 +64,16 @@ public class TypingSpeedTester {
         double minutes = timeTaken / 60.0;
         return wordsTyped / minutes;
     }
+
+    public static int countCorrectCharacters(String original, String typed) {
+        int correct = 0;
+        int minLength = Math.min(original.length(), typed.length());
+        for (int i = 0; i < minLength; i++) {
+            if (original.charAt(i) == typed.charAt(i)) {
+                correct++;
+            }
+        }
+        return correct;
+    }
 }
+
