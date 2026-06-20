@@ -45,6 +45,9 @@ public class TypingSpeedTester {
 
         double wpm = calculateWPM(wordsTyped, timeTaken);
 
+        double accuracy = calculateAccuracy(paragraph, typedText);
+        int mistakes = countMistakes(paragraph, typedText);
+
         System.out.println();
         System.out.println("========== RESULT ==========");
 
@@ -56,6 +59,12 @@ public class TypingSpeedTester {
 
         System.out.printf("WPM        : %.2f%n",
                 wpm);
+
+        System.out.printf("Accuracy   : %.2f%%%n",
+                accuracy);
+
+        System.out.println("Mistakes   : " +
+                mistakes);
 
         sc.close();
     }
