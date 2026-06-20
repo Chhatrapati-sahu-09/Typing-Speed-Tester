@@ -80,5 +80,10 @@ public class TypingSpeedTester {
         int correct = countCorrectCharacters(original, typed);
         return ((double) correct / original.length()) * 100;
     }
+
+    public static int countMistakes(String original, String typed) {
+        int correct = countCorrectCharacters(original, typed);
+        return original.length() - correct;
+    }
 }
 
