@@ -43,11 +43,7 @@ public class TypingSpeedTester {
         int wordsTyped =
                 typedText.trim().split("\\s+").length;
 
-        double minutes =
-                timeTaken / 60.0;
-
-        double wpm =
-                wordsTyped / minutes;
+        double wpm = calculateWPM(wordsTyped, timeTaken);
 
         System.out.println();
         System.out.println("========== RESULT ==========");
@@ -62,5 +58,10 @@ public class TypingSpeedTester {
                 wpm);
 
         sc.close();
+    }
+
+    public static double calculateWPM(int wordsTyped, double timeTaken) {
+        double minutes = timeTaken / 60.0;
+        return wordsTyped / minutes;
     }
 }
