@@ -75,5 +75,10 @@ public class TypingSpeedTester {
         }
         return correct;
     }
+
+    public static double calculateAccuracy(String original, String typed) {
+        int correct = countCorrectCharacters(original, typed);
+        return ((double) correct / original.length()) * 100;
+    }
 }
 
