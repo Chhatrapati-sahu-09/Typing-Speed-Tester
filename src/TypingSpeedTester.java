@@ -192,22 +192,18 @@ public class TypingSpeedTester {
                         selectedParagraphs.length)];
 
         System.out.println(
-                "=================================");
+        Colors.PURPLE +
+        """
+╔══════════════════════════════════════╗
+║            TYPE THIS TEXT            ║
+╚══════════════════════════════════════╝
+"""
+        + Colors.RESET);
 
         System.out.println(
-                "      TYPING SPEED TESTER");
-
-        System.out.println(
-                "=================================");
-
-        System.out.println();
-
-        System.out.println(
-                "Type the following paragraph:");
-
-        System.out.println();
-
-        System.out.println(paragraph);
+        Colors.WHITE +
+        paragraph +
+        Colors.RESET);
 
         System.out.println();
 
