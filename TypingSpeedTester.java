@@ -7,6 +7,9 @@ import java.util.Scanner;
 
 public class TypingSpeedTester {
 
+    private static Scanner sc = new Scanner(System.in);
+    private static String username;
+
     public static double calculateWPM(
             int wordsTyped,
             double timeTaken) {
@@ -65,10 +68,52 @@ public class TypingSpeedTester {
 
     public static void main(String[] args) {
 
-        Scanner sc = new Scanner(System.in);
-
         System.out.print("Enter Username: ");
-        String username = sc.nextLine();
+        username = sc.nextLine();
+
+        while(true) {
+
+            System.out.println();
+            System.out.println(
+                    "===== MENU =====");
+
+            System.out.println(
+                    "1. Start Test");
+
+            System.out.println(
+                    "2. View Scores");
+
+            System.out.println(
+                    "3. Exit");
+
+            System.out.print(
+                    "Choose: ");
+
+            int choice =
+                    Integer.parseInt(
+                            sc.nextLine());
+
+            switch(choice) {
+
+                case 1:
+                    startTest();
+                    break;
+
+                case 2:
+                    viewScores();
+                    break;
+
+                case 3:
+                    System.exit(0);
+
+                default:
+                    System.out.println(
+                            "Invalid choice.");
+            }
+        }
+    }
+
+    public static void startTest() {
 
         String[] paragraphs = {
 
@@ -179,8 +224,6 @@ public class TypingSpeedTester {
                 username,
                 wpm,
                 accuracy);
-
-        sc.close();
     }
 
     public static void saveScore(
