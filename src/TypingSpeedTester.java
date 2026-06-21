@@ -8,6 +8,10 @@ import java.util.Comparator;
 import java.util.Random;
 import java.util.Scanner;
 
+import static com.diogonunes.jcolor.Ansi.colorize;
+import static com.diogonunes.jcolor.Attribute.*;
+import com.github.lalyos.jfiglet.FigletFont;
+
 public class TypingSpeedTester {
 
     private static Scanner sc = new Scanner(System.in);
@@ -71,23 +75,17 @@ public class TypingSpeedTester {
 
     public static void main(String[] args) throws InterruptedException {
 
-        System.out.println(
-        Colors.CYAN + Colors.BOLD +
-        """
-╔══════════════════════════════════════════════════════════════╗
-║                                                              ║
-║   ████████╗██╗   ██╗██████╗ ██╗███╗   ██╗ ██████╗           ║
-║   ╚══██╔══╝╚██╗ ██╔╝██╔══██╗██║████╗  ██║██╔════╝           ║
-║      ██║    ╚████╔╝ ██████╔╝██║██╔██╗ ██║██║  ███╗          ║
-║      ██║     ╚██╔╝  ██╔═══╝ ██║██║╚██╗██║██║   ██║          ║
-║      ██║      ██║   ██║     ██║██║ ╚████║╚██████╔╝          ║
-║      ╚═╝      ╚═╝   ╚═╝     ╚═╝╚═╝  ╚═══╝ ╚═════╝           ║
-║                                                              ║
-║               ⚡ SPEED TESTER PRO ⚡                         ║
-║                                                              ║
-╚══════════════════════════════════════════════════════════════╝
-"""
-        + Colors.RESET);
+        try {
+            System.out.println(
+                    colorize(
+                            FigletFont.convertOneLine("Speed Tester"),
+                            GREEN_TEXT(),
+                            BOLD()
+                    )
+            );
+        } catch (Exception e) {
+            System.out.println("Speed Tester");
+        }
 
         System.out.print("Enter Username: ");
         username = sc.nextLine();
@@ -97,21 +95,20 @@ public class TypingSpeedTester {
         while(true) {
 
             System.out.println(
-            Colors.YELLOW +
-            """
-┌───────────────────────────────┐
-│        MAIN MENU              │
-├───────────────────────────────┤
-│  1. Start Test                │
-│  2. View Scores               │
-│  3. Leaderboard               │
-│  4. Exit                      │
-└───────────────────────────────┘
-"""
-            + Colors.RESET);
+            colorize("""
+╔══════════════════════════════╗
+║         MAIN MENU           ║
+╠══════════════════════════════╣
+║ 1. Start Test               ║
+║ 2. View Scores              ║
+║ 3. Leaderboard              ║
+║ 4. Exit                     ║
+╚══════════════════════════════╝
+""",
+            CYAN_TEXT())
+            );
 
-            System.out.print(
-                    "Choose: ");
+            System.out.print("Choose: ");
 
             int choice =
                     Integer.parseInt(
@@ -192,18 +189,19 @@ public class TypingSpeedTester {
                         selectedParagraphs.length)];
 
         System.out.println(
-        Colors.PURPLE +
-        """
-╔══════════════════════════════════════╗
-║            TYPE THIS TEXT            ║
-╚══════════════════════════════════════╝
-"""
-        + Colors.RESET);
+        colorize("""
+┌────────────────────────────────────┐
+│          TYPE THIS TEXT            │
+└────────────────────────────────────┘
+""",
+        MAGENTA_TEXT())
+        );
 
         System.out.println(
-        Colors.WHITE +
-        paragraph +
-        Colors.RESET);
+        colorize(
+                paragraph,
+                WHITE_TEXT())
+        );
 
         System.out.println();
 
@@ -213,24 +211,28 @@ public class TypingSpeedTester {
         System.out.println();
 
         System.out.println(
-        Colors.GREEN +
-        "\nGet Ready...\n"
-        + Colors.RESET);
+        colorize(
+                "\nGet Ready...\n",
+                GREEN_TEXT(),
+                BOLD()
+        ));
 
         for(int i = 3; i >= 1; i--) {
 
             System.out.println(
-                    Colors.YELLOW +
-                    i +
-                    Colors.RESET);
+                    colorize(
+                            String.valueOf(i),
+                            YELLOW_TEXT(),
+                            BOLD()));
 
             Thread.sleep(1000);
         }
 
         System.out.println(
-                Colors.GREEN +
-                "GO 🚀" +
-                Colors.RESET);
+                colorize(
+                        "GO 🚀",
+                        GREEN_TEXT(),
+                        BOLD()));
 
         long startTime =
                 System.currentTimeMillis();
@@ -272,46 +274,62 @@ public class TypingSpeedTester {
                         paragraph,
                         typedText);
 
+        System.out.println();
+
         System.out.println(
-        Colors.GREEN +
-        """
-╔════════════════════════════════════╗
-║            TEST RESULT            ║
-╚════════════════════════════════════╝
-"""
-        + Colors.RESET);
+        colorize("""
+╔════════════════════════════╗
+║       TEST RESULTS        ║
+╚════════════════════════════╝
+""",
+        GREEN_TEXT(),
+        BOLD())
+        );
 
-        System.out.printf(
-                Colors.CYAN +
-                "WPM       : %.2f%n",
-                wpm);
+        System.out.println(
+        colorize(
+                "⚡ WPM       : " + String.format("%.1f", wpm),
+                CYAN_TEXT()));
 
-        System.out.printf(
-                "Accuracy  : %.2f%%%n",
-                accuracy);
+        System.out.println(
+        colorize(
+                "🎯 Accuracy  : " +
+                        String.format("%.1f", accuracy) + "%",
+                GREEN_TEXT()));
 
-        System.out.printf(
-                "Mistakes  : %d%n",
-                mistakes);
+        System.out.println(
+        colorize(
+                "❌ Mistakes  : " +
+                        mistakes,
+                RED_TEXT()));
 
-        System.out.printf(
-                "Time      : %.2f sec%n",
-                timeTaken);
-
-        System.out.println(Colors.RESET);
-
-        if(wpm >= 50) {
+        if(wpm >= 70){
 
             System.out.println(
-            Colors.YELLOW +
-            """
-🏆🏆🏆🏆🏆
+            colorize("""
+🏆 LEGEND TYPIST 🏆
+""",
+            YELLOW_TEXT(),
+            BOLD()));
 
-  AMAZING SPEED
+        }
+        else if(wpm >= 50){
 
-🏆🏆🏆🏆🏆
-"""
-            + Colors.RESET);
+            System.out.println(
+            colorize("""
+🥇 PRO TYPIST
+""",
+            GREEN_TEXT()));
+
+        }
+        else if(wpm >= 30){
+
+            System.out.println(
+            colorize("""
+🥈 GOOD JOB
+""",
+            CYAN_TEXT()));
+
         }
 
         saveScore(
@@ -440,13 +458,13 @@ public class TypingSpeedTester {
         });
 
         System.out.println(
-        Colors.CYAN +
-        """
+        colorize("""
 ╔════════════════════════════════╗
-║          LEADERBOARD           ║
+║          LEADERBOARD          ║
 ╚════════════════════════════════╝
-"""
-        + Colors.RESET);
+""",
+        BLUE_TEXT(),
+        BOLD()));
 
         for(int i = 0; i < list.size(); i++) {
 
@@ -457,11 +475,14 @@ public class TypingSpeedTester {
             else if (i == 2) rankPrefix = "🥉 ";
             else rankPrefix = (i + 1) + ". ";
 
-            System.out.printf(
-                    "%s%-12s %.1f WPM%n",
-                    rankPrefix,
-                    entry.username,
-                    entry.wpm);
+            System.out.println(
+            colorize(
+                    String.format("%s%-12s %.1f WPM",
+                            rankPrefix,
+                            entry.username,
+                            entry.wpm),
+                    CYAN_TEXT()
+            ));
         }
     }
 
