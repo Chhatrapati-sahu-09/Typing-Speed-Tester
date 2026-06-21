@@ -63,6 +63,9 @@ public class TypingSpeedTester {
 
         Scanner sc = new Scanner(System.in);
 
+        System.out.print("Enter Username: ");
+        String username = sc.nextLine();
+
         String[] paragraphs = {
 
                 "Java is a powerful programming language.",
