@@ -272,30 +272,33 @@ public class TypingSpeedTester {
                         paragraph,
                         typedText);
 
-        System.out.println();
-
         System.out.println(
-                "========== RESULT ==========");
+        Colors.GREEN +
+        """
+╔════════════════════════════════════╗
+║            TEST RESULT            ║
+╚════════════════════════════════════╝
+"""
+        + Colors.RESET);
 
         System.out.printf(
-                "Time Taken : %.2f seconds%n",
-                timeTaken);
-
-        System.out.println(
-                "Words Typed: "
-                        + wordsTyped);
-
-        System.out.printf(
-                "WPM        : %.2f%n",
+                Colors.CYAN +
+                "WPM       : %.2f%n",
                 wpm);
 
         System.out.printf(
-                "Accuracy   : %.2f%%%n",
+                "Accuracy  : %.2f%%%n",
                 accuracy);
 
-        System.out.println(
-                "Mistakes   : "
-                        + mistakes);
+        System.out.printf(
+                "Mistakes  : %d%n",
+                mistakes);
+
+        System.out.printf(
+                "Time      : %.2f sec%n",
+                timeTaken);
+
+        System.out.println(Colors.RESET);
 
         saveScore(
                 username,
