@@ -96,21 +96,19 @@ public class TypingSpeedTester {
 
         while(true) {
 
-            System.out.println();
             System.out.println(
-                    "===== MENU =====");
-
-            System.out.println(
-                    "1. Start Test");
-
-            System.out.println(
-                    "2. View Scores");
-
-            System.out.println(
-                    "3. Leaderboard");
-
-            System.out.println(
-                    "4. Exit");
+            Colors.YELLOW +
+            """
+┌───────────────────────────────┐
+│        MAIN MENU              │
+├───────────────────────────────┤
+│  1. Start Test                │
+│  2. View Scores               │
+│  3. Leaderboard               │
+│  4. Exit                      │
+└───────────────────────────────┘
+"""
+            + Colors.RESET);
 
             System.out.print(
                     "Choose: ");
