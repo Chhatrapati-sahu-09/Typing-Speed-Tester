@@ -300,6 +300,20 @@ public class TypingSpeedTester {
 
         System.out.println(Colors.RESET);
 
+        if(wpm >= 50) {
+
+            System.out.println(
+            Colors.YELLOW +
+            """
+🏆🏆🏆🏆🏆
+
+  AMAZING SPEED
+
+🏆🏆🏆🏆🏆
+"""
+            + Colors.RESET);
+        }
+
         saveScore(
                 username,
                 wpm,
