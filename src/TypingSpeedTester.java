@@ -69,7 +69,7 @@ public class TypingSpeedTester {
         return original.length() - correct;
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
         System.out.println(
         Colors.CYAN + Colors.BOLD +
@@ -91,6 +91,8 @@ public class TypingSpeedTester {
 
         System.out.print("Enter Username: ");
         username = sc.nextLine();
+
+        loadingAnimation();
 
         while(true) {
 
@@ -421,5 +423,18 @@ public class TypingSpeedTester {
                     entry.username,
                     entry.wpm);
         }
+    }
+
+    public static void loadingAnimation()
+            throws InterruptedException {
+
+        System.out.print("Loading");
+
+        for(int i = 0; i < 5; i++) {
+            Thread.sleep(400);
+            System.out.print(".");
+        }
+
+        System.out.println();
     }
 }
