@@ -219,7 +219,3 @@ Time Taken : 14.2 sec
 ## Author
 
 Chhatrapati Sahu
-
-B.Tech Computer Science and Engineering
-
-Java Developer | DSA Enthusiast | Open Source Learner
