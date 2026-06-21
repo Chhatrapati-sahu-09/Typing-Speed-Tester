@@ -2,7 +2,7 @@
 
 <div align="center">
 
-<img src="https://skillicons.dev/icons?i=java,git,github,idea" />
+<img src="https://skillicons.dev/icons?i=java,git,github" />
 
 A terminal-based Typing Speed Tester built with Java.
 
