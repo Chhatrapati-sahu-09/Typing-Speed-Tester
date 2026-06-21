@@ -141,7 +141,7 @@ public class TypingSpeedTester {
         }
     }
 
-    public static void startTest() {
+    public static void startTest() throws InterruptedException {
 
         System.out.println();
         System.out.println("Choose Difficulty Level:");
@@ -215,6 +215,26 @@ public class TypingSpeedTester {
                 "Start typing below:");
 
         System.out.println();
+
+        System.out.println(
+        Colors.GREEN +
+        "\nGet Ready...\n"
+        + Colors.RESET);
+
+        for(int i = 3; i >= 1; i--) {
+
+            System.out.println(
+                    Colors.YELLOW +
+                    i +
+                    Colors.RESET);
+
+            Thread.sleep(1000);
+        }
+
+        System.out.println(
+                Colors.GREEN +
+                "GO 🚀" +
+                Colors.RESET);
 
         long startTime =
                 System.currentTimeMillis();
