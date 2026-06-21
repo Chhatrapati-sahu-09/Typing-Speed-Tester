@@ -1,3 +1,5 @@
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -171,6 +173,41 @@ public class TypingSpeedTester {
                 "Mistakes   : "
                         + mistakes);
 
+        saveScore(
+                username,
+                wpm,
+                accuracy);
+
         sc.close();
+    }
+
+    public static void saveScore(
+            String username,
+            double wpm,
+            double accuracy)
+    {
+
+        try {
+
+            FileWriter writer =
+                    new FileWriter(
+                            "scores.txt",
+                            true);
+
+            writer.write(
+                    username +
+                    "," +
+                    String.format("%.2f", wpm) +
+                    "," +
+                    String.format("%.2f", accuracy)
+                    + "\n");
+
+            writer.close();
+
+        } catch(IOException e) {
+
+            System.out.println(
+                    "Error saving score.");
+        }
     }
 }
