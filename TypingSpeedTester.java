@@ -2,6 +2,9 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -84,7 +87,10 @@ public class TypingSpeedTester {
                     "2. View Scores");
 
             System.out.println(
-                    "3. Exit");
+                    "3. Leaderboard");
+
+            System.out.println(
+                    "4. Exit");
 
             System.out.print(
                     "Choose: ");
@@ -104,6 +110,10 @@ public class TypingSpeedTester {
                     break;
 
                 case 3:
+                    showLeaderboard();
+                    break;
+
+                case 4:
                     System.exit(0);
 
                 default:
@@ -315,6 +325,83 @@ public class TypingSpeedTester {
 
             System.out.println(
                     "No score history found.");
+        }
+    }
+
+    static class LeaderboardEntry {
+        String username;
+        double wpm;
+
+        LeaderboardEntry(String username, double wpm) {
+            this.username = username;
+            this.wpm = wpm;
+        }
+    }
+
+    public static void showLeaderboard() {
+
+        ArrayList<LeaderboardEntry> list = new ArrayList<>();
+
+        try {
+
+            BufferedReader reader =
+                    new BufferedReader(
+                            new FileReader(
+                                    "scores.txt"));
+
+            String line;
+
+            while((line =
+                    reader.readLine()) != null) {
+
+                String[] parts = line.split(",");
+
+                if(parts.length >= 2) {
+
+                    String name = parts[0].trim();
+
+                    double wpmValue =
+                            Double.parseDouble(
+                                    parts[1].trim());
+
+                    list.add(
+                            new LeaderboardEntry(
+                                    name,
+                                    wpmValue));
+                }
+            }
+
+            reader.close();
+
+        } catch(Exception e) {
+
+            System.out.println(
+                    "No score history found.");
+
+            return;
+        }
+
+        Collections.sort(list, new Comparator<LeaderboardEntry>() {
+            @Override
+            public int compare(LeaderboardEntry a, LeaderboardEntry b) {
+                return Double.compare(b.wpm, a.wpm);
+            }
+        });
+
+        System.out.println(
+                "\n===== LEADERBOARD =====");
+
+        System.out.println();
+
+        for(int i = 0; i < list.size(); i++) {
+
+            LeaderboardEntry entry = list.get(i);
+
+            System.out.printf(
+                    "%d. %-12s %.2f WPM%n",
+                    (i + 1),
+                    entry.username,
+                    entry.wpm);
         }
     }
 }
