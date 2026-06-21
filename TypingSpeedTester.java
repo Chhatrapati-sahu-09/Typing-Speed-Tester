@@ -115,20 +115,53 @@ public class TypingSpeedTester {
 
     public static void startTest() {
 
-        String[] paragraphs = {
+        System.out.println();
+        System.out.println("Choose Difficulty Level:");
+        System.out.println("1. Easy");
+        System.out.println("2. Medium");
+        System.out.println("3. Hard");
+        System.out.print("Choose: ");
 
-                "Java is a powerful programming language.",
+        int levelChoice = Integer.parseInt(sc.nextLine());
 
-                "Practice coding every day to improve your skills.",
-
-                "Data structures and algorithms are important."
+        String[] easy = {
+                "Java is fun.",
+                "Practice coding daily.",
+                "Programming improves logic."
         };
+
+        String[] medium = {
+                "Data structures are important in software development.",
+                "Object oriented programming helps organize code."
+        };
+
+        String[] hard = {
+                "Multithreading enables concurrent execution of multiple tasks.",
+                "Algorithms and optimization techniques improve efficiency."
+        };
+
+        String[] selectedParagraphs;
+        switch(levelChoice) {
+            case 1:
+                selectedParagraphs = easy;
+                break;
+            case 2:
+                selectedParagraphs = medium;
+                break;
+            case 3:
+                selectedParagraphs = hard;
+                break;
+            default:
+                System.out.println("Invalid choice. Defaulting to Easy.");
+                selectedParagraphs = easy;
+                break;
+        }
 
         Random random = new Random();
 
         String paragraph =
-                paragraphs[random.nextInt(
-                        paragraphs.length)];
+                selectedParagraphs[random.nextInt(
+                        selectedParagraphs.length)];
 
         System.out.println(
                 "=================================");
