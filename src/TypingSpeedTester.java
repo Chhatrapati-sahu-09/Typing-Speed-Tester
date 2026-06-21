@@ -440,17 +440,26 @@ public class TypingSpeedTester {
         });
 
         System.out.println(
-                "\n===== LEADERBOARD =====");
-
-        System.out.println();
+        Colors.CYAN +
+        """
+╔════════════════════════════════╗
+║          LEADERBOARD           ║
+╚════════════════════════════════╝
+"""
+        + Colors.RESET);
 
         for(int i = 0; i < list.size(); i++) {
 
             LeaderboardEntry entry = list.get(i);
+            String rankPrefix;
+            if (i == 0) rankPrefix = "🥇 ";
+            else if (i == 1) rankPrefix = "🥈 ";
+            else if (i == 2) rankPrefix = "🥉 ";
+            else rankPrefix = (i + 1) + ". ";
 
             System.out.printf(
-                    "%d. %-12s %.2f WPM%n",
-                    (i + 1),
+                    "%s%-12s %.1f WPM%n",
+                    rankPrefix,
                     entry.username,
                     entry.wpm);
         }
