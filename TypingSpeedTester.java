@@ -1,3 +1,5 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Random;
@@ -208,6 +210,35 @@ public class TypingSpeedTester {
 
             System.out.println(
                     "Error saving score.");
+        }
+    }
+
+    public static void viewScores() {
+
+        try {
+
+            BufferedReader reader =
+                    new BufferedReader(
+                            new FileReader(
+                                    "scores.txt"));
+
+            String line;
+
+            System.out.println(
+                    "\n===== SCORE HISTORY =====");
+
+            while((line =
+                    reader.readLine()) != null) {
+
+                System.out.println(line);
+            }
+
+            reader.close();
+
+        } catch(Exception e) {
+
+            System.out.println(
+                    "No score history found.");
         }
     }
 }
